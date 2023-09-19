@@ -10,8 +10,6 @@
 
 import random
 
-# Life's player
-
 
 # Wordlists
 word1 = [
