@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block content %}
+<main id="main">
+
+    
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Add Advertisement</h2>
+          <ol>
+            <li><a href="index">Home</a></li>
+            <li><a href="profil">Profil</a></li>
+            <li>Add advertisement</li>
+          </ol>
+        </div>
+
+        
+
+      </div>
+    </section>
+
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+<br>
+
+<form method="POST" enctype="multipart/form-data">
+<div class="col m-4">
+    {{ wtf.quick_form(form) }}
+</div>
+</form>
+
+<br>
+{% endblock %}

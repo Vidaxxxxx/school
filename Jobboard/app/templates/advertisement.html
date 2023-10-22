@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main id="main">
+
+
+  <section class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">      
+          <h2>Advertisements</h2>
+          <ol>
+            <li><a href="index">Home</a></li>
+            <li>Advertisements</li>
+          </ol>
+        </div>
+    </div>
+  </section>
+
+  {% for post in posts %}
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+
+              <div class="swiper-slide">
+                <img src="static/img/upload/{{ post.picture }}" alt="">
+              </div>
+
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>{{ post.title }}</h3>
+              <ul>
+                <li><strong>Company</strong>: {{ post.user.company.name}}</li>
+                <li><strong>Date Posted</strong>: {{ post.date_posted}}</li>
+                <li><strong>Wages</strong>: {{ post.wages }}</li>
+                <li><strong>Place</strong>: {{ post.place }}</li>
+                <li><strong>Email</strong>: {{ post.user.email }}</li>
+                <br>
+                
+                {% if current_user.id == post.user.id %}
+                <a href="{{ url_for('main.edit_advertisement', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>
+                <a href="{{ url_for('main.candidate', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Candidates</a>
+                <a href="{{ url_for('main.delete_post', id=post.id)}}" class="btn btn-outline-danger btn-sm">Delete Post</a>
+
+                {% elif current_user.id_role != 2 and current_user.id_role != 3 %}
+                <a href="{{ url_for('main.apply', id=post.id) }}" class="btn btn-outline-secondary btn-sm">Apply</a>
+                {% endif %}
+
+            </ul>
+          </div>
+          <div class="portfolio-description">
+            <h2>Description</h2>
+            <p class="short-description">
+              {{ post.description[:100] }}... 
+            </p>
+            <div class="full-description" style="display: none;">
+              {{ post.description }}
+            </div>
+            <button class="learn-more-btn btn btn-outline-secondary btn-sm">Learn More</button>
+</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+  {% endfor %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.learn-more-btn').click(function() {
+            const fullDescription = $(this).siblings('.full-description');
+            const shortDescription = $(this).siblings('.short-description');
+            if (fullDescription.is(":visible")) {
+                fullDescription.hide();
+                shortDescription.show();
+                $(this).text('Learn More');
+            } else {
+                fullDescription.show();
+                shortDescription.hide();
+                $(this).text('Show Less');
+            }
+        });
+    });
+</script>
+
+</main>
+
+{% endblock %}

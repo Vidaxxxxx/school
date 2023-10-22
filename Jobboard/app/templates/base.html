@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PokéJobs</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="{{ url_for('static', filename='pokeball.ico') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
+
+            <div class="logo">
+                <h1><a href="index">PokéJobs</a></h1>
+                <!-- <a href="index"><img src="static/img/logo.png" alt="" class="img-fluid"></a> -->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                  <li><a class="nav-link scrollto active" href="{{ url_for('main.index', _anchor='hero') }}">Home</a></li>
+                  <li><a class="nav-link scrollto" href="{{ url_for('main.index', _anchor='about') }}">About</a></li>
+                  <li><a class="nav-link scrollto" href="{{ url_for('main.advertisement') }}">Advertisements</a></li>
+                  <li><a class="nav-link scrollto" href="{{ url_for('main.index', _anchor='portfolio') }}">Jobs</a></li>
+                  <li><a class="nav-link scrollto" href="{{ url_for('main.index', _anchor='team') }}">Candidates</a></li>
+                  <li>
+                    {% if current_user.is_authenticated %}
+                    <li class="dropdown"><a href="#"><span>Activ session</span> <i class="bi bi-chevron-down"></i></a>
+                      <ul>
+                          {% if current_user.id_role == 1 or current_user.id_role == 2 %}
+                          <li><a class="nav-link scrollto" href="{{ url_for('auth.profil') }}">Profil</a></li>
+
+                          {% elif current_user.id_role == 1 %}
+                          <li><a href="">My applications</a></li>
+
+                          {% elif current_user.id_role == 2 %}
+                          <li><a href="{{ url_for('main.my_advertisement') }}">My advertisements</a></li>
+
+                          {% elif current_user.id_role == 3 %}
+                          <li><a class="nav-link scrollto" href="{{ url_for('admin.dashboard_companies') }}">DASHBOARD Companies</a></li>
+                          <li><a class="nav-link scrollto" href="{{ url_for('admin.dashboard_candidates') }}">DASHBOARD Candidates</a></li>
+                          
+                          {% endif %}
+
+                          <li><a class="nav-link scrollto" href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                      </ul>
+                    </li>
+
+                      
+                    
+                    {% else %}
+                    <li><a class="nav-link scrollto" href="{{ url_for('auth.login') }}">Log In</a></li>
+                    
+                    {% endif %}
+                  </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+        </div>
+    </header>
+
+    {% block title %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>PokéJobs</h3>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index#hero">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index#about">About us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>PokéJobs</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>

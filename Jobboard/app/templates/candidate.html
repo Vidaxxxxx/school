@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main id="main">
+
+    
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">      
+          <h2>Candidates</h2>
+          <ol>
+            <li><a href="index">Home</a></li>
+            <li><a href="advertisement">Advertisement</a></li>
+            <li>Job application</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+
+  {% for post in posts %}    
+   
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="static/img/upload/{{ post.picture }}" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-10" >
+            <div class="portfolio-info">
+              <h3>Name : {{ post.user.lastname }} {{ post.user.firstname }}</h3>
+              <ul>
+                <li><strong>Email</strong>: <a href="#">{{ post.user.email }}</a></li>
+                <li><strong>Phone</strong>: {{ post.user.phone }}</li>
+                <li><strong>Date Posted</strong>: {{ post.date_posted }}</li>
+                <br>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>Description</h2>
+              {{ post.message }}
+              <p>
+               
+                <br>
+         
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  
+    
+  {% endfor %}
+
+</main>
+
+  {% endblock %}

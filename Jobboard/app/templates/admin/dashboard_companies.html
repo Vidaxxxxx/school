@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="main">
+    
+  <section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">      
+        <h2>DASHBOARD Companies</h2>
+        <ol>
+          <li><a href="index">Home</a></li>
+          <li>DASHBOARD Companies</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="accordion" id="accordionCompany">
+    {% for company in companies %}
+    <div class="accordion-item">
+
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#company{{ company.id }}" aria-expanded="false" aria-controls="company{{ company.id }}">
+          {{ company.company.name }}
+        </button>
+      </h2>
+
+      <div id="company{{ company.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionCompany">
+        <div class="accordion-body">
+
+          <div>              
+            <strong>Company: </strong>{{ company.company.name }}<br>
+            <strong>Lastname: </strong>{{ company.lastname }}<br>
+            <strong>Firstname: </strong>{{ company.firstname }}<br>
+            <strong>Phone: </strong>{{ company.phone }}<br>
+            <strong>Email: </strong>{{ company.email }}<br>
+
+            <a href="" class="btn btn-outline-secondary btn-sm">Edit Company</a>
+            <a href="" class="btn btn-outline-danger btn-sm">Delete Company</a>
+          </div>
+          
+          <div class="accordion" id="accordionAdvertisement{{ company.id }}">
+            <br>
+            <strong>Company's advertisements:</strong>
+            <br>
+            {% for advertisement in advertisements%}
+              {% if advertisement.id_user == company.id %}
+              <div class="accordion-item">
+
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#company{{ company.id }}advertisement{{ advertisement.id }}" aria-expanded="false" aria-controls="company{{ company.id }}advertisement{{ advertisement.id }}">
+                    {{ advertisement.title }}
+                  </button>
+                </h2>
+
+                <div id="company{{ company.id }}advertisement{{ advertisement.id }}" class="accordion-collapse collapse" data-bs-parent="#accordionAdvertisement{{ company.id }}">
+                  <div class="accordion-body">
+                    <section id="portfolio-details" class="portfolio-details">
+                      <div class="container">
+                        <div class="row gy-4">
+                          <div class="col-lg-8">
+                            <div class="portfolio-details-slider swiper">
+                              <div class="swiper-wrapper align-items-center">
+                                <div class="swiper-slide">
+                                  <img src="static/img/upload/{{ advertisement.picture }}" alt="">
+                                </div>
+                              </div>
+                              <div class="swiper-pagination"></div>
+                            </div>
+                          </div>
+                
+                          <div class="col-lg-4">
+                            <div class="portfolio-info">
+                              <h3>{{ advertisement.title }}</h3>
+                              <ul>
+                                <li><strong>Company</strong>: {{ advertisement.user.company.name}}</li>
+                                <li><strong>Date Posted</strong>: {{ advertisement.date_posted}}</li>
+                                <li><strong>Wages</strong>: {{ advertisement.wages }}</li>
+                                <li><strong>Place</strong>: {{ advertisement.place }}</li>
+                                <li><strong>Email</strong>: {{ advertisement.user.email }}</li>
+                                <br>
+                                
+                                <a href="{{ url_for('main.edit_advertisement', id=advertisement.id)}}" class="btn btn-outline-secondary btn-sm">Edit Post</a>
+                                <a href="{{ url_for('main.delete_post', id=advertisement.id)}}" class="btn btn-outline-danger btn-sm">Delete Post</a>
+                
+                              </ul>
+                            </div>
+                            <div class="portfolio-description">
+                              <h2>Description</h2>
+                              <p>
+                                {{ advertisement.description }}
+                                <br>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>                  
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</main>
+{% endblock %}
