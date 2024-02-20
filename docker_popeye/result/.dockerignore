@@ -1,0 +1,6 @@
+.git
+*Dockerfile*
+*docker-compose*
+*compose*
+node_modules
+containerRun.sh

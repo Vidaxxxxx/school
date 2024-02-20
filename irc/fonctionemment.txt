@@ -1,0 +1,19 @@
+    -Envoi d'un message par un utilisateur sur le canal : 
+        Tu utilises l'interface utilisateur (React) pour taper un message. 
+        Lorsque tu envoies le message, le client (React) émet un événement via Socket.io vers le serveur, par exemple, 
+        L'événement "message" contient des informations telles que le contenu du message, l'identifiant de l'utilisateur, le canal sur lequel le message est envoyé, etc. 
+
+    -Réception et traitement du message par le serveur : 
+        Le serveur reçoit l'événement "message" via la connexion WebSocket. 
+        Le serveur enregistre le message dans la base de données MongoDB, associé au canal spécifique. 
+        Le serveur émet un autre événement, par exemple "broadcastMessage", pour informer tous les clients connectés au même canal du nouveau message. 
+
+    -Réception du message par les autres utilisateurs sur le même canal:
+        Les autres clients (utilisateurs) connectés au même canal reçoivent l'événement "broadcastMessage" via Socket.io. 
+        Le client (React) de chaque utilisateur met à jour son interface utilisateur pour afficher le nouveau message, généralement en ajoutant le message à la liste des messages du canal. 
+        Le message peut contenir des détails tels que l'auteur, le contenu, l'heure, etc., en fonction de la manière dont tu souhaites l'afficher. 
+
+En résumé, lorsqu'un utilisateur envoie un message, le serveur enregistre ce message dans la base de données, 
+puis le diffuse à tous les autres utilisateurs connectés au même canal. Chaque client réagit à cet événement 
+en mettant à jour son interface utilisateur pour afficher le nouveau message dans le canal de discussion. 
+Cela crée une expérience de chat en temps réel où les messages sont immédiatement partagés entre les utilisateurs du même canal. 

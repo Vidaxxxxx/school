@@ -1,0 +1,23 @@
+.channel {
+    background-color: green;
+}
+
+.title {
+    color: white;
+    background-color: #232428;
+    border-bottom: 2px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.btn {
+    color: white;
+    background-color: red;
+    border-top: 2px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
