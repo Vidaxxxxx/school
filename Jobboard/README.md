@@ -1,7 +1,7 @@
 # Lancer PokéJobs
-- Lancer une venv (exécuter "source /venv/bin/activate")
+- Lancer une venv (exécuter "source venv/bin/activate")
 - exécuter "pip3 install -r requirement.txt"
-- se placer dans T-WEB-501-PAR_22
+- se placer dans la racine du fichier
 - exécuter "export FLASK_APP=pokejob.py"
 - exécuter "flask run"
 - taper "[localhost:5000](http://localhost:5000/)" dans le navigateur
