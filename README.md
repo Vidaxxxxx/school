@@ -8,3 +8,5 @@ Jobboard >>> Created a jobboard with a unique Pokémon theme. This project was d
 TowerDefense >>> Created a playable TowerDefense with GUI using JAVA.
 
 Docker_popeye >>> POPEYE is a project aimed at mastering the basics of containerizing applications and describing multi-container infrastructures using Docker and Docker Compose. Like the brave sailor Popeye, this project navigates through the vast ocean of operating systems and configurations, ensuring that containers work wherever they might end. This capability allows containers to be used on any host OS where Docker is installed.
+
+IRC >>> Internet Relay Chat is a text-based chat system for instant messaging on web app.
