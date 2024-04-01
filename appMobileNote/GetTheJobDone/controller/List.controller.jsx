@@ -3,7 +3,7 @@ import { useBoardOperations } from './Boards.controller.jsx';
 
 // Api credentials
 const apiKey = 'Enter api key there';
-const token = 'Enter token there';
+const token = 'Enter your token there';
 
 
 export const useListOperations = (boardId) => {

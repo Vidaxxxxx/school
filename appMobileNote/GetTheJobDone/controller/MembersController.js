@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 // Api credentials
 const apiKey = 'Enter api key there';
-const token = 'Enter token there';
-
+const token = 'Enter your token there';
 
 export const useMembersOperations = (cardId) => {
   const [members, setMembers] = useState([]);
