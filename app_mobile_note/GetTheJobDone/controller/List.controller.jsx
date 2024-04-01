@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useBoardOperations } from './Boards.controller.jsx';
 
 // Api credentials
-const apiKey = 'a20f8c5c49dfe9416c888c938ea8e137';
-const token = 'ATTA9ca3c19477d882c23e2f1e84d470e04b4b006d0e8f9932feb0e7b3dbe1eb6b56E28A57CA';
+const apiKey = 'Enter api key there';
+const token = 'Enter token there';
 
 
 export const useListOperations = (boardId) => {

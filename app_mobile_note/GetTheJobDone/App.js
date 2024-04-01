@@ -14,7 +14,7 @@ const App = () => {
     <NavigationContainer>
       <Heading />
       <Stack.Navigator>
-        <Stack.Screen name="Workspace" component={WorkspaceView} initialParams={{ userId: '65dce6cc1f2f0dcab00210db' }}/>
+        <Stack.Screen name="Workspace" component={WorkspaceView} initialParams={{ userId: 'Enter userID there' }}/>
         <Stack.Screen name="Board" component={BoardView}/>
         <Stack.Screen name="List" component={ListView}/> 
         <Stack.Screen name="Card" component={CardView}/>

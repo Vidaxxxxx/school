@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 
 // Api credentials
-const apiKey = 'a20f8c5c49dfe9416c888c938ea8e137';
-const token = 'ATTA9ca3c19477d882c23e2f1e84d470e04b4b006d0e8f9932feb0e7b3dbe1eb6b56E28A57CA';
-// const userId = '65dce6cc1f2f0dcab00210db';
+const apiKey = 'Enter api key there';
+const token = 'Enter token there';
 
 export const useWorkspaceOperations = (userId) => {
   const [workspaces, setWorkspaces] = useState([]);
